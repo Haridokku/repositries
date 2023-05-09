@@ -1,0 +1,16 @@
+.item-container {
+  margin: 10px;
+}
+
+.normal-button {
+  color: #0f172a;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Roboto';
+}
+.active {
+  color: #0284c7;
+  border: 2px solid #0284c7;
+  border-radius: 10px;
+  padding: 10px;
+}

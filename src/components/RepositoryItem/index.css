@@ -1,0 +1,26 @@
+.list-item {
+  background-color: #f8f8ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.avatar {
+  width: 40px;
+}
+.head {
+  color: #e73959;
+  font-size: 20px;
+  font-family: 'Roboto';
+  font-weight: bold;
+}
+.stars {
+  display: flex;
+}
+.img_star {
+  width: 20px;
+}
+.describe {
+  color: #1e293b;
+  font-size: 18px;
+  font-family: 'Roboto';
+}

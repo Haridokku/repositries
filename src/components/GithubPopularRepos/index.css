@@ -1,0 +1,26 @@
+.git-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+.heading {
+  color: #0f172a;
+  font-family: 'Lobster';
+  font-size: 25px;
+  font-weight: bold;
+}
+.language-container {
+  display: flex;
+  justify-content: center;
+}
+.fail {
+  color: #0f172a;
+  font-family: 'Roboto';
+  font-size: 35px;
+  font-weight: bold;
+}
+.list-container {
+  display: flex;
+  flex-wrap: wrap;
+}
