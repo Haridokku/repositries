@@ -20,12 +20,16 @@ class GithubPopularRepos extends Component {
     repositList: [],
   }
 
+  componentDidMount() {
+    this.renderLanguagesView()
+  }
+
   updateActiveId = active => {
     this.setState({activeId: active})
   }
 
-  renderFailureView = () => {
-    ;<div className="failure-container">
+  renderFailureView = () => (
+    <div className="failure-container">
       <img
         src="https://assets.ccbp.in/frontend/react-js/api-failure-view.png"
         alt="failure view"
@@ -33,22 +37,25 @@ class GithubPopularRepos extends Component {
       />
       <h1 className="fail">Something Went Wrong</h1>
     </div>
-  }
+  )
 
-  renderLoadingView = () => {
-    ;<div data-testid="loader">
+  renderLoadingView = () => (
+    <div data-testid="loader">
       <Loader type="ThreeDots" color="#0284c7" height={80} width={80} />
     </div>
-  }
+  )
 
-  getRepositries = () => {
+  renderGetRepositries = () => {
     const {repositList} = this.state
-
-    ;<ul className="list-container">
-      {repositList.map(each => (
-        <RepositoryItem details={each} key={each.id} />
-      ))}
-    </ul>
+    return (
+      <>
+        <ul className="list-container">
+          {repositList.map(each => (
+            <RepositoryItem details={each} key={each.id} />
+          ))}
+        </ul>
+      </>
+    )
   }
 
   renderLanguagesView = async () => {
@@ -60,8 +67,7 @@ class GithubPopularRepos extends Component {
     console.log(response)
     if (response.ok) {
       const data = response.json()
-      const requiredData = data.popular_repos
-      const modifiedData = requiredData.map(each => ({
+      const modifiedData = data.popular_repos.map(each => ({
         name: each.name,
         id: each.id,
         issuesCount: each.issues_count,
@@ -69,10 +75,8 @@ class GithubPopularRepos extends Component {
         starsCount: each.stars_count,
         avatarUrl: each.avatar_url,
       }))
-      this.setState(
-        {repositList: modifiedData, isLoading: false},
-        this.getRepositries,
-      )
+      console.log(modifiedData)
+      this.setState({repositList: modifiedData, isLoading: false})
     } else {
       this.setState({isLoading: false})
       this.renderFailureView()
@@ -94,7 +98,7 @@ class GithubPopularRepos extends Component {
             />
           ))}
         </ul>
-        {isLoading ? this.renderLoadingView() : this.renderLanguagesView()}
+        {isLoading ? this.renderLoadingView() : this.renderGetRepositries()}
       </div>
     )
   }
