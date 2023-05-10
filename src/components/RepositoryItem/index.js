@@ -1,7 +1,7 @@
 import './index.css'
 
 const RepositoryItem = props => {
-  const details = {props}
+  const {details} = props
   const {name, issuesCount, forksCount, starsCount, avatarUrl} = details
   return (
     <li className="list-item">
